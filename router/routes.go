@@ -1,20 +1,17 @@
 package router
 
-import "github.com/gin-gonic/gin"
-
-func getOpportunities(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "getOpportunities",
-	})
-}
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/vapdev/gopportunities.git/handler"
+)
 
 func initializeRoutes(router *gin.Engine) {
 	v1 := router.Group("/api/v1")
 	{
-		v1.GET("/opportunities", getOpportunities)
-		// v1.GET("/opportunities/:id", getOpportunity)
-		// v1.POST("/opportunities", createOpportunity)
-		// v1.PUT("/opportunities/:id", updateOpportunity)
-		// v1.DELETE("/opportunities/:id", deleteOpportunity)
+		v1.GET("/opportunities", handler.GetOpportunitiesHandler)
+		v1.GET("/opportunities/:id", handler.GetOpportunityHandler)
+		v1.POST("/opportunities", handler.CreateOpportunityHandler)
+		v1.PUT("/opportunities/:id", handler.UpdateOpportunityHandler)
+		v1.DELETE("/opportunities/:id", handler.DeleteOpportunityHandler)
 	}
 }

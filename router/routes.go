@@ -5,7 +5,7 @@ import (
 	"github.com/vapdev/gopportunities.git/handler"
 )
 
-func initializeRoutes(router *gin.Engine) {
+func initRoutes(router *gin.Engine) {
 	v1 := router.Group("/api/v1")
 	{
 		v1.GET("/opportunities", handler.GetOpportunitiesHandler)
